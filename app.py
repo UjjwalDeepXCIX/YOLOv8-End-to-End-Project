@@ -1,4 +1,9 @@
-from src.logger import logging 
+import sys
+import os
 from src.exception import Customed_exception
-logging.info("logger initiated")    
+from src.logger import logging 
+from src.pipeline.training_pipeline import TrainPipeline
 
+obj = TrainPipeline()
+obj.runpipeline()
+print("data ingestion completed successfully")

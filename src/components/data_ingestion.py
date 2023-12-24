@@ -31,7 +31,7 @@ class DataIngestion:
             prefix = 'https://drive.google.com/uc?/export=download&id='
             gdown.download(prefix+file_id,zip_file_path)
 
-            logging.info(f"Data download from source- {dataset_url} completed successfully")
+            logging.info(f"Data downloading completed successfully")
 
             return zip_file_path
 
@@ -42,13 +42,13 @@ class DataIngestion:
     
     def extract_zip_file(self,zip_file_path: str)-> str:
         try:
-            feature_store_path = self.data_ingestion_config.feature_store_file_path
-            os.makedirs(feature_store_path, exist_ok=True)
+            feature_path = self.data_ingestion_config.feature_store_file_path
+            os.makedirs(feature_path, exist_ok=True)
             with zipfile.ZipFile(zip_file_path, 'r') as zip_ref:
-                zip_ref.extractall(feature_store_path)
-            logging.info(f"Extracting zip file: {zip_file_path} into dir: {feature_store_path}")
+                zip_ref.extractall(feature_path)
+            logging.info(f"Extracting zipped data: {zip_file_path} to dir: {feature_path}")
 
-            return feature_store_path
+            return feature_path
 
         except Exception as e:
             raise Customed_exception(e, sys)
@@ -57,18 +57,16 @@ class DataIngestion:
 
     
     def initiate_data_ingestion(self)-> DataArtifact:
-        logging.info("initiated data_ingestion method of Data_Ingestion class")
+        logging.info("initiating data_ingestion ")
         try: 
             zip_file_path = self.download_data()
-            feature_store_path = self.extract_zip_file(zip_file_path)
+            feature_path = self.extract_zip_file(zip_file_path)
 
             data_ingestion_artifact = DataArtifact(
                 data_zip_file_path = zip_file_path,
-                feature_store_path = feature_store_path
+                feature_path = feature_path
             )
-
-            logging.info("data_ingestion completed")
-            logging.info(f"Extracted Data ingestion artifact: {data_ingestion_artifact}")
+            logging.info(f"Data artifacts Extracted successfully: {data_ingestion_artifact}")
 
             return data_ingestion_artifact
 
