@@ -26,5 +26,8 @@ class DataConfig:
 
     data_download_url: str = data_url
 
-
-
+@dataclass
+class validationConfig:
+    data_validate: str = os.path.join(training_pipeline_config.artifacts_dir, Data_validation)
+    data_status: str = os.path.join(data_validate, Data_status)
+    data_files = Data_files

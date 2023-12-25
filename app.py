@@ -7,3 +7,5 @@ from src.pipeline.training_pipeline import TrainPipeline
 obj = TrainPipeline()
 obj.runpipeline()
 print("data ingestion completed successfully")
+print()
+print("data checks completed")
