@@ -8,3 +8,8 @@ class DataArtifact:
 @dataclass
 class DataValArtifact:
     data_status: bool
+
+
+@dataclass
+class ModelTrainerArtifact:
+    trained_model_file_path: str

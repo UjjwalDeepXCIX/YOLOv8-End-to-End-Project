@@ -31,3 +31,18 @@ class validationConfig:
     data_validate: str = os.path.join(training_pipeline_config.artifacts_dir, Data_validation)
     data_status: str = os.path.join(data_validate, Data_status)
     data_files = Data_files
+
+@dataclass
+class ModelTrainerConfig:
+    model_trainer_dir: str = os.path.join(
+        training_pipeline_config.artifacts_dir, MODEL_TRAINER_DIR_NAME
+    )
+
+    weight_name = MODEL_TRAINER_PRETRAINED_WEIGHT_NAME
+
+    no_epochs = MODEL_TRAINER_NO_EPOCHS
+
+    yaml_file = data_path
+   #batch_size = MODEL_TRAINER_BATCH_SIZE
+
+

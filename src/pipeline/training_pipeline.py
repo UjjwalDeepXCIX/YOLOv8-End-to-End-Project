@@ -3,16 +3,19 @@ from src.logger import logging
 from src.exception import Customed_exception
 from src.components.data_ingestion import DataIngestion
 from src.components.data_validation import DataValidation
+from src.components.model_trainer import ModelTrainer
 
-from src.entity.config_entity import DataConfig, validationConfig                                            
+from src.entity.config_entity import DataConfig, validationConfig, ModelTrainerConfig                                          
 
-from src.entity.artifacts import DataArtifact, DataValArtifact
+from src.entity.artifacts import DataArtifact, DataValArtifact, ModelTrainerArtifact
 
 class TrainPipeline:
     def __init__(self):
         self.data_ingestion_config = DataConfig()
         self.data_validation_config = validationConfig()
-    
+        self.model_trainer_config = ModelTrainerConfig()
+         
+
     def start_ingestion(self)-> DataArtifact:
         try: 
             logging.info(
@@ -51,10 +54,28 @@ class TrainPipeline:
 
         except Exception as e:
             raise Customed_exception(e, sys) from e
-        
+
+    def start_model_trainer(self
+    ) -> ModelTrainerArtifact:
+        try:
+            model_trainer = ModelTrainer(
+                model_trainer_config=self.model_trainer_config,
+            )
+            model_trainer_artifact = model_trainer.initiate_model_trainer()
+            return model_trainer_artifact
+
+        except Exception as e:
+            raise Customed_exception(e, sys)
+
     def runpipeline(self) -> None:
         try:
             data_ingestion_artifact = self.start_ingestion()
             data_validation_artifact = self.start_validation(data_ingestion_artifact= data_ingestion_artifact)
+            
+            if data_validation_artifact.data_status == True:
+                model_trainer_artifact = self.start_model_trainer()
+            else:
+                raise Exception("Your data is not in correct format")
+
         except Exception as e:
             raise Customed_exception(e, sys)
