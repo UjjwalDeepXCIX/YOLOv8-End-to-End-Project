@@ -55,17 +55,17 @@ class TrainPipeline:
         except Exception as e:
             raise Customed_exception(e, sys) from e
 
-    def start_model_trainer(self
-    ) -> ModelTrainerArtifact:
-        try:
-            model_trainer = ModelTrainer(
-                model_trainer_config=self.model_trainer_config,
-            )
-            model_trainer_artifact = model_trainer.initiate_model_trainer()
-            return model_trainer_artifact
+   # def start_model_trainer(self
+    #) -> ModelTrainerArtifact:
+    #    try:
+     #       model_trainer = ModelTrainer(
+     #           model_trainer_config=self.model_trainer_config,
+     #       )
+     #       model_trainer_artifact = model_trainer.initiate_model_trainer()
+     #       return model_trainer_artifact
 
-        except Exception as e:
-            raise Customed_exception(e, sys)
+      #  except Exception as e:
+      #      raise Customed_exception(e, sys)
 
     def runpipeline(self) -> None:
         try:
@@ -73,9 +73,10 @@ class TrainPipeline:
             data_check_artifact = self.start_validation(data_ingestion_artifact= data_ingestion_artifact)
             
             if data_check_artifact.data_status == True:
-                model_trainer_artifact = self.start_model_trainer()
-            else:
-                raise Exception("Your data is not in correct format")
+                print("data is in correct format")
+                #model_trainer_artifact = self.start_model_trainer()
+           # else:
+                #raise Exception("Your data is not in correct format")
 
         except Exception as e:
             raise Customed_exception(e, sys)
