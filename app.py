@@ -1,5 +1,5 @@
 import sys,os
-from src.pipeline.training_pipeline import TrainPipeline
+#from src.pipeline.training_pipeline import TrainPipeline
 from src.utils.utils import decodeImage, encodeImageIntoBase64
 from flask import Flask, request, jsonify, render_template,Response
 from flask_cors import CORS, cross_origin
@@ -38,9 +38,9 @@ def predictRoute():
         image = request.json['image']
         decodeImage(image, clApp.filename)
 
-        os.system("yolo task=detect mode=predict model=artifacts/model_trainer/best.pt conf=0.25 source=data/inputImage.jpg save=true")
+        os.system("yolo task=detect mode=predict model=Weights/best.pt conf=0.25 source=Data\input.jpg save=true")
 
-        opencodedbase64 = encodeImageIntoBase64("runs/segment/predict/inputImage.jpg")
+        opencodedbase64 = encodeImageIntoBase64("runs/detect/predict/input.jpg")
         result = {"image": opencodedbase64.decode('utf-8')}
         os.system("rm -rf runs")
 
