@@ -2,7 +2,7 @@ import sys, os
 from src.logger import logging
 from src.exception import Customed_exception
 from src.components.data_ingestion import DataIngestion
-from src.components.data_validation import DataValidation
+from src.components.data_check import DataValidation
 from src.components.model_trainer import ModelTrainer
 
 from src.entity.config_entity import DataConfig, validationConfig, ModelTrainerConfig                                          
