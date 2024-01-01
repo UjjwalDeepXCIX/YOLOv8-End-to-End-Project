@@ -25,7 +25,7 @@ Follow these steps to run the project:
 
 ## Model Training
 
-The notebook for training the model is available on the cloud at [link](insert_cloud_training_notebook_link_here).
+The notebook for training the model is available on the cloud at [link](https://github.com/UjjwalDeepXCIX/Machine-Learning/blob/65401e2ba941bc51f350ac986bc4adabd3c3fd94/blank_Space_Detection_YOLOv8.ipynb).
 
 To use a pre-trained model:
 - Train the model on the cloud platform and download the `best.pt`.
@@ -36,8 +36,7 @@ Alternatively, you can:
 
 Please ensure you have the necessary dataset and annotations for training the model.
 
-## Folder Structure
-# Project Folder Structure Explanation
+## Folder Structure and Explanation
 
 - `src/`: Root directory containing project source code.
   - `components/`: Houses modules responsible for specific project components.
@@ -45,7 +44,7 @@ Please ensure you have the necessary dataset and annotations for training the mo
     - `data_check.py`: Module handling data validation and checks.
     - `model_trainer.py`: Module dedicated to training the model.
   - `constant/`: Stores constants and configurations for the project.
-    - `training_pipeline/`: Subdirectory holding constants related to the training pipeline.
+    - `parameters/`: Subdirectory holding constants and paths related to the training pipeline.
   - `entity/`: Manages entity-related classes or structures for the project.
     - `artifacts.py`: Module responsible for handling artifacts.
     - `config_entity.py`: Module defining the configuration entity.
@@ -57,16 +56,16 @@ Please ensure you have the necessary dataset and annotations for training the mo
 
 
 # Image Results
-result_image_paths = [
-    "path/to/result_image_1.jpg",
-    "path/to/result_image_2.jpg",
-    "path/to/result_image_3.jpg",
-]
+ 
+<p align="center">
+  <img src="Data\WebAppPreviewSS\Screenshot1 (1).png" width="800" title="landing Screen">
 
-result_image_urls = [
-    "https://example.com/result_image_1.jpg",
-    "https://example.com/result_image_2.jpg",
-    "https://example.com/result_image_3.jpg",
-]
+
+  <img src="Data\WebAppPreviewSS\Screenshot1 (2).png" width="800" title="Predicting">
+
+
+  <img src="Data\WebAppPreviewSS\Screenshot1 (3).png" width="800" title="Results">
+  
+</p>
 
 
