@@ -6,7 +6,7 @@ class DataArtifact:
     feature_path:str
 
 @dataclass
-class DataValArtifact:
+class DataCheckArtifact:
     data_status: bool
 
 
